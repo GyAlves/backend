@@ -2,16 +2,16 @@ require("dotenv").config();
 require("express-async-errors");
 
 const express = require('express');
-const routes = require('./routes/products.routes');
+const routes = require('./routes/funds.routes');
 const mongooseConnection = require("./database/mongoose");
 
 const server = express();
 
 server.use(express.json());
-server.use("/api/v1/products", routes)
+server.use("/api/v1/funds", routes)
 
 const port = 5000;
-
+ 
 
 const start = async () => {
     try {
