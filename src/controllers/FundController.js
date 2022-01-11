@@ -2,9 +2,9 @@ const Fund = require("../models/Fund");
 
 const getAllFunds = async (req, res) => {
     try {
-        
+
         const funds = await Fund.find();
-        res.status(200).json({ funds});
+        res.status(200).json({ funds });
     } catch (error) {
         res.status(404).json({ funds });
     }
@@ -13,8 +13,8 @@ const getAllFunds = async (req, res) => {
 const createFund = async (req, res) => {
     try {
 
-        const { name, expiration, target, description } = req.body;
-        const fund = await Fund.create({ name, expiration, target, description });
+        const { title, author, expiration, target, description } = req.body;
+        const fund = await Fund.create({ title, author, expiration, target, description });
         res.status(200).json({ fund });
 
     } catch (error) {
@@ -38,9 +38,9 @@ const updateFund = async (req, res) => {
 
     try {
         const { fund_id } = req.params;
-        const { name, expiration, target, description } = req.body;
+        const { title, author, expiration, target, description } = req.body;
 
-        await Fund.findByIdAndUpdate(fund_id, { name, expiration, target, description });
+        await Fund.findByIdAndUpdate(fund_id, { title, author, expiration, target, description });
 
         res.status(200).json({ message: "Fund updated" })
     } catch (error) {
